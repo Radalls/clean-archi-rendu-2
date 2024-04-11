@@ -12,6 +12,19 @@ public class MealBuilder {
     private MealBuilder() {
     }
 
+    /**
+     * Construit un repas à partir des arguments passés en paramètre au lancement du
+     * programme
+     * 
+     * @param mealType    assiette ou sandwich
+     * @param mealName    nom du repas
+     * @param drinkName   nom de la boisson
+     * @param drinkSize   taille de la boisson
+     * @param dessertName nom du dessert
+     * @param dessertSize taille du dessert
+     * @param coffee      café pris avec le repas ou non
+     * @return le repas construit à partir des arguments
+     */
     public static Meal buildMealFromArgs(
             String mealType, String mealName, String drinkName, String drinkSize,
             String dessertName, String dessertSize, String coffee) {

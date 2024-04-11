@@ -1,3 +1,6 @@
+/**
+ * Contient les informations d'un repas commandé.
+ */
 public record Meal(
         MealType type,
         String mealName,
@@ -7,6 +10,11 @@ public record Meal(
         MealDessertSize dessertSize,
         boolean coffee) {
 
+    /**
+     * Calcule le prix du repas
+     * 
+     * @return le prix du repas
+     */
     public int getPrice() {
         int price = 0;
         switch (type) {
