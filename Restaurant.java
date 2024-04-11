@@ -5,21 +5,32 @@ public class Restaurant {
 
         total += meal.getPrice();
 
-        if (meal.drinkSize() == MealDrinkSize.MOYEN && meal.dessertSize() == MealDessertSize.NORMAL) {
+        if (isMealStandardFormula(meal)) {
             System.out.print("Prix Formule Standard appliquée");
             total += 3;
-        } else if (meal.drinkSize() == MealDrinkSize.GRAND && meal.dessertSize() == MealDessertSize.SPECIAL) {
+        } else if (isMealMaxFormula(meal)) {
             System.out.print("Prix Formule Max appliquée");
             total = 21;
         }
 
-        if (meal.type() == MealType.ASSIETTE && meal.drinkSize() == MealDrinkSize.MOYEN
-                && meal.dessertSize() == MealDessertSize.NORMAL && meal.coffee()) {
+        if (isCoffeeOffered(meal)) {
             System.out.print(" avec café offert!");
         } else {
             total += meal.coffee() ? 0 : 1;
         }
 
         return total;
+    }
+
+    private boolean isMealStandardFormula(Meal meal) {
+        return meal.drinkSize() == MealDrinkSize.MOYEN && meal.dessertSize() == MealDessertSize.NORMAL;
+    }
+
+    private boolean isMealMaxFormula(Meal meal) {
+        return meal.drinkSize() == MealDrinkSize.GRAND && meal.dessertSize() == MealDessertSize.SPECIAL;
+    }
+
+    private boolean isCoffeeOffered(Meal meal) {
+        return meal.type() == MealType.ASSIETTE && isMealStandardFormula(meal) && meal.coffee();
     }
 }
